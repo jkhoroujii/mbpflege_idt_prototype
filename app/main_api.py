@@ -23,4 +23,7 @@ app.include_router(medicine.router)
 app.include_router(schedules.route)
 app.include_router(ai.router)
 
-# app health checkpoint; group documentation / infrastructure check / 
+# app health checkpoint; group documentation / infrastructure check / define a standard GET checkpoint
+@app.get("/health", tags=["meta"])
+async def health():
+    return {"status": "ok", "app": settings.APP_NAME}

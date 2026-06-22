@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from psycopg2 import sql
+from contextlib import contextmanager
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
@@ -73,3 +74,17 @@ def log_audit(staff_id: int, action: str, time: datetime, ip_address: str) -> No
     )
     if not successful_update:
         print(f"CRITICAL: Access for staff_id: {staff_id} failed")
+
+
+@contextmanager
+def get_db():
+    """ Yield connection, commit on success and rollback on failure """
+    connection = get_connection()
+    try:
+        yield connection
+        connection.commit()
+    except Exception as e:
+        connection.rollback()
+        raise ConnectionError("Connection to database failed.")
+    finally:
+        connection.close() 

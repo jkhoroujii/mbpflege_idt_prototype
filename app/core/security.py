@@ -10,7 +10,7 @@ import asyncpg
 
 from app.core.config import Settings
 from app.db import get_db 
-from app.model.schema import Staff
+from app.database.models import Staff
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")

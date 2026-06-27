@@ -44,7 +44,8 @@ create table if not exists medicine (
     medicine_name varchar(50) not null,
     medicine_std_dosage varchar(20) not null,
     medicine_frequency varchar(20) not null,
-    medicine_side_effects text
+    medicine_side_effects text, 
+    medicine_stock not null int
 );
 
 create table if not exists medicine_logs (

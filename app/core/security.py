@@ -1,11 +1,9 @@
 from datetime import datetime, timedelta, timezone
 from typing import Optional 
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt 
+from jose import JWTError, jwt
 from passlib.context import CryptContext
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 import asyncpg
 
 from app.core.config import Settings

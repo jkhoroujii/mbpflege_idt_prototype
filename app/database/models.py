@@ -66,7 +66,14 @@ class Medicine:
     created_at : datetime 
 
 class PatientMedication: 
-    pass
+    medicine_id : int 
+    medicine_name : str
+    patient_id : int 
+    patient_fname : str
+    medicine_log_dosage : int 
+    medicine_log_admin_time : datetime 
+    medicine_frequency : str 
+    medicine_log_notes : str 
 
 class PatientMedsAdministrationLog: 
     pass
